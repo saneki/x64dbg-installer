@@ -32,6 +32,16 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "{group}\x32dbg"; Filename: "{app}\x32\x32dbg.exe"
 Name: "{group}\x64dbg"; Filename: "{app}\x64\x64dbg.exe"
 
+[Types]
+Name: "full"; Description: "Full installation"
+Name: "compact"; Description: "Compact installation"
+Name: "custom"; Description: "Custom installation"; Flags: iscustom
+
+[Components]
+Name: "program"; Description: "Program Files"; Types: full compact custom; Flags: fixed
+Name: "pluginsdk"; Description: "Plugin SDK"; Types: full
+
 [Files]
 Source: "binaries\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "binaries\pluginsdk\*"; DestDir: "{app}\pluginsdk"; Components: pluginsdk; Flags: ignoreversion recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
