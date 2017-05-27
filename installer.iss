@@ -42,6 +42,6 @@ Name: "program"; Description: "Program Files"; Types: full compact custom; Flags
 Name: "pluginsdk"; Description: "Plugin SDK"; Types: full
 
 [Files]
-Source: "binaries\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
-Source: "binaries\pluginsdk\*"; DestDir: "{app}\pluginsdk"; Components: pluginsdk; Flags: ignoreversion recursesubdirs
+Source: "files\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "files\pluginsdk\*"; DestDir: "{app}\pluginsdk"; Components: pluginsdk; Flags: ignoreversion recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
