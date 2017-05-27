@@ -3,6 +3,9 @@
 #define MyAppPublisher "x64dbg"
 #define MyAppURL "http://x64dbg.com"
 
+; Plugins, comment these out if you don't want them included in the installer
+#define PLUGIN_SCYLLA
+
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
@@ -40,8 +43,34 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 [Components]
 Name: "program"; Description: "Program Files"; Types: full compact custom; Flags: fixed
 Name: "pluginsdk"; Description: "Plugin SDK"; Types: full
+Name: "plugins"; Description: "Open Source Plugins"; Types: full
+
+; ==========================
+; Optional plugin components
+; ==========================
+
+#ifdef PLUGIN_SCYLLA
+Name: "plugins\scylla"; Description: "Scylla Hide"; Types: full compact
+#endif
 
 [Files]
 Source: "files\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 Source: "files\pluginsdk\*"; DestDir: "{app}\pluginsdk"; Components: pluginsdk; Flags: ignoreversion recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+
+; =====================
+; Optional plugin files
+; =====================
+
+#ifdef PLUGIN_SCYLLA
+; 32-bit
+Source: "files\plugins\ScyllaHide\HookLibraryx86.dll"; DestDir: "{app}\x32"; Components: "plugins\scylla"
+Source: "files\plugins\ScyllaHide\NtApiCollection.ini"; DestDir: "{app}\x32"; Components: "plugins\scylla"
+Source: "files\plugins\ScyllaHide\scylla_hide.ini"; DestDir: "{app}\x32"; Components: "plugins\scylla"
+Source: "files\plugins\ScyllaHide\plugins\ScyllaHideX64DBGPlugin.dp32"; DestDir: "{app}\x32\plugins"; Components: "plugins\scylla"
+; 64-bit
+Source: "files\plugins\ScyllaHide\HookLibraryx64.dll"; DestDir: "{app}\x64"; Components: "plugins\scylla"
+Source: "files\plugins\ScyllaHide\NtApiCollection.ini"; DestDir: "{app}\x64"; Components: "plugins\scylla"
+Source: "files\plugins\ScyllaHide\scylla_hide.ini"; DestDir: "{app}\x64"; Components: "plugins\scylla"
+Source: "files\plugins\ScyllaHide\plugins\ScyllaHideX64DBGPlugin.dp64"; DestDir: "{app}\x64\plugins"; Components: "plugins\scylla"
+#endif
