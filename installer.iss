@@ -6,6 +6,7 @@
 ; Plugins, comment these out if you don't want them included in the installer
 #define PLUGIN_SCYLLA
 #define PLUGIN_TITANHIDE
+#define PLUGIN_SWISSARMYKNIFE
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -58,6 +59,10 @@ Name: "plugins\scylla"; Description: "Scylla Hide"; Types: full compact
 Name: "plugins\titanhide"; Description: "Titan Hide"; Types: full
 #endif
 
+#ifdef PLUGIN_SWISSARMYKNIFE
+Name: "plugins\swissarmyknife"; Description: "Swiss Army Knife"; Types: full
+#endif
+
 [Files]
 Source: "files\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 Source: "files\pluginsdk\*"; DestDir: "{app}\pluginsdk"; Components: pluginsdk; Flags: ignoreversion recursesubdirs
@@ -85,4 +90,11 @@ Source: "files\plugins\ScyllaHide\plugins\ScyllaHideX64DBGPlugin.dp64"; DestDir:
 Source: "files\plugins\TitanHide\x32\TitanHide.dp32"; DestDir: "{app}\x32\plugins"; Components: "plugins\titanhide"
 ; 64-bit
 Source: "files\plugins\TitanHide\x64\TitanHide.dp64"; DestDir: "{app}\x64\plugins"; Components: "plugins\titanhide"
+#endif
+
+#ifdef PLUGIN_SWISSARMYKNIFE
+; 32-bit
+Source: "files\plugins\SwissArmyKnife\x32\plugins\SwissArmyKnife.dp32"; DestDir: "{app}\x32\plugins"; Components: "plugins\swissarmyknife"
+; 64-bit
+Source: "files\plugins\SwissArmyKnife\x64\plugins\SwissArmyKnife.dp64"; DestDir: "{app}\x64\plugins"; Components: "plugins\swissarmyknife"
 #endif
