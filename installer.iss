@@ -5,6 +5,7 @@
 
 ; Plugins, comment these out if you don't want them included in the installer
 #define PLUGIN_SCYLLA
+#define PLUGIN_TITANHIDE
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -53,6 +54,10 @@ Name: "plugins"; Description: "Open Source Plugins"; Types: full
 Name: "plugins\scylla"; Description: "Scylla Hide"; Types: full compact
 #endif
 
+#ifdef PLUGIN_TITANHIDE
+Name: "plugins\titanhide"; Description: "Titan Hide"; Types: full
+#endif
+
 [Files]
 Source: "files\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 Source: "files\pluginsdk\*"; DestDir: "{app}\pluginsdk"; Components: pluginsdk; Flags: ignoreversion recursesubdirs
@@ -73,4 +78,11 @@ Source: "files\plugins\ScyllaHide\HookLibraryx64.dll"; DestDir: "{app}\x64"; Com
 Source: "files\plugins\ScyllaHide\NtApiCollection.ini"; DestDir: "{app}\x64"; Components: "plugins\scylla"
 Source: "files\plugins\ScyllaHide\scylla_hide.ini"; DestDir: "{app}\x64"; Components: "plugins\scylla"
 Source: "files\plugins\ScyllaHide\plugins\ScyllaHideX64DBGPlugin.dp64"; DestDir: "{app}\x64\plugins"; Components: "plugins\scylla"
+#endif
+
+#ifdef PLUGIN_TITANHIDE
+; 32-bit
+Source: "files\plugins\TitanHide\x32\TitanHide.dp32"; DestDir: "{app}\x32\plugins"; Components: "plugins\titanhide"
+; 64-bit
+Source: "files\plugins\TitanHide\x64\TitanHide.dp64"; DestDir: "{app}\x64\plugins"; Components: "plugins\titanhide"
 #endif
