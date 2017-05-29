@@ -31,6 +31,20 @@ ArchitecturesInstallIn64BitMode=x64 ia64
 UninstallDisplayIcon={app}\x64\x64dbg.exe
 WizardSmallImageFile=img\smallimage.bmp
 
+[Tasks]
+Name: shellexe; Description: "Register shell extensions for *.exe files"; GroupDescription: "File extensions:"
+Name: shelldll; Description: "Register shell extensions for *.dll files"; GroupDescription: "File extensions:"
+
+[Registry]
+; Shell extension: *.exe
+Root: HKCR; Subkey: "exefile\shell\Debug with x64dbg"; ValueType: string; ValueData: "Debug with x64dbg"; Flags: uninsdeletekey; Tasks: shellexe
+Root: HKCR; Subkey: "exefile\shell\Debug with x64dbg"; ValueType: string; ValueName: "Icon"; ValueData: """{app}\x96dbg.exe"",0"; Tasks: shellexe
+Root: HKCR; Subkey: "exefile\shell\Debug with x64dbg\Command"; ValueType: expandsz; ValueData: """C:\Program Files\x64dbg\x96dbg.exe"" ""%1"""; Tasks: shellexe
+; Shell extension: *.dll
+Root: HKCR; Subkey: "dllfile\shell\Debug with x64dbg"; ValueType: string; ValueData: "Debug with x64dbg"; Flags: uninsdeletekey; Tasks: shelldll
+Root: HKCR; Subkey: "dllfile\shell\Debug with x64dbg"; ValueType: string; ValueName: "Icon"; ValueData: """{app}\x96dbg.exe"",0"; Tasks: shelldll
+Root: HKCR; Subkey: "dllfile\shell\Debug with x64dbg\Command"; ValueType: expandsz; ValueData: """C:\Program Files\x64dbg\x96dbg.exe"" ""%1"""; Tasks: shelldll
+
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
