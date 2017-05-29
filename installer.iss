@@ -29,6 +29,7 @@ Compression=lzma
 SolidCompression=yes
 ArchitecturesInstallIn64BitMode=x64 ia64
 UninstallDisplayIcon={app}\x64\x64dbg.exe
+WizardSmallImageFile=img\smallimage.bmp
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
