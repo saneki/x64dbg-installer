@@ -32,6 +32,7 @@ UninstallDisplayIcon={app}\x64\x64dbg.exe
 WizardSmallImageFile=img\smallimage.bmp
 
 [Tasks]
+Name: desktopicon; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: shellexe; Description: "Register shell extensions for *.exe files"; GroupDescription: "File extensions:"
 Name: shelldll; Description: "Register shell extensions for *.dll files"; GroupDescription: "File extensions:"
 
@@ -49,8 +50,12 @@ Root: HKCR; Subkey: "dllfile\shell\Debug with x64dbg\Command"; ValueType: expand
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Icons]
+; Start menu
 Name: "{group}\x32dbg"; Filename: "{app}\x32\x32dbg.exe"
 Name: "{group}\x64dbg"; Filename: "{app}\x64\x64dbg.exe"
+; Desktop icons
+Name: "{userdesktop}\x32dbg"; Filename: "{app}\x32\x32dbg.exe"; Tasks: desktopicon
+Name: "{userdesktop}\x64dbg"; Filename: "{app}\x64\x64dbg.exe"; Tasks: desktopicon
 
 [Types]
 Name: "full"; Description: "Full installation"
