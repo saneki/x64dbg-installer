@@ -20,5 +20,8 @@ Building
 2. Run `download-plugins.ps1` to download the plugins to `files/plugins`
 3. Compile `installer.iss` with Inno Setup Compiler
 
+Note: The plugin download script requires [7zip] binaries to be on the `PATH`.
+
+[7zip]:http://www.7-zip.org/
 [Inno Setup]:http://www.jrsoftware.org/isinfo.php
 [x64dbg]:https://github.com/x64dbg/x64dbg
